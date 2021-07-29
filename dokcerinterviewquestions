@@ -1,0 +1,140 @@
+	1) What is dockerfile ?
+	
+	Dockefile is textfile it contains all commands a user could call on command line to assemble am image.
+	We wanted to make our application(java) into container based image ,then we use the docker file to create the 
+	Container based image .in that file we define set commands to assmple a image.
+	
+	Docker build -t imagename path of the dockerfile
+	
+	2) Have you used any containerization toll like docker ?
+	A) Yes
+	
+	3) Can you tell me difference between virtualization and containerization ?
+	
+In virtualization ,on top of  your host operating system we will install hyperwiser ,on top hypewiser using the guest operating system we will create the VM's..we will install our app on top of VM.each VM can have different or same OS based on our requirement.
+	
+	
+	In containerization ,on top of our host operating system we will install any container engine like docker. On docker engine by using images we can spin of the containers.
+	
+
+	4)  In docker images what generally exist and what It consists?
+      A)    docker images nothing but iso file, which are made for containerzation. we will be having all apps like httpd nginx and so many images.
+
+	1) Let's say I have container in docker, so I can perform diff operations on container ,can you please tell me what kind of operations we can perform on container ,which already created ?
+	
+	Docker stop conainer id
+	Docker exec -it nameoftheconainer bash- login into the conainer
+	Docker logs nameofthecontainer
+	
+	2) If I pause a container, can I remove or kill this container ?
+	docker stop (containerid)
+	then also we can see it in exited status
+	docker ps -a
+	docker rm containeid
+	3) If I delete container ,are we loose the data related with it for the application in the container ?
+	
+	Yes we loose.if we don't wanted to loose it ..we should create a volume and associate with that container
+	docker run -d --name db -e MYSQL_EMPTY_ROOT_PASSWORD=true -v(create a persistent volume) mysql-db:/var/lib/mysql  mysql:8.0.25
+
+	1) Can you tell me docker-compose ?
+	Docker-compose is tool and it used to create a multi container application in docker, here we will create docker-compsoe.yaml file and will give all required details in that fil and will run docker-compose up -d ,our application will be up and running.
+	
+	
+	
+	2) What does docker ps command do ?
+	
+   A) it will provide all the running container details
+
+
+	1) Can you access container, how you access container ?
+      A)  Docker exec -it nameoftheconainer bash- login into the container
+
+	1) What is the command to access the container ?
+	    Docker exec -it nameoftheconainer bash- login into the conainer
+	
+	2) If I have a,b,c container,if I have got to go into container b, how to go to contanier b?
+              Docker exec -it b bash- login into the conainer
+
+	1) What is docker server version ?
+           20.10.7
+
+	1) What are advantages of docker ?
+          
+Benefits of docker: 
+Consistent and Isolated Environment
+Cost-effectiveness with Fast Deployment
+Mobility – Ability to Run Anywhere
+Repeatability and Automation
+Test, Roll Back and Deploy
+Flexibility
+Collaboration, Modularity and Scaling
+
+	1) How do you setup docker and Jenkins in production environment ?
+ CloudBees Docker Build and Publish plugin:
+ CloudBees DockerHub Notification
+
+
+
+	1) How do you create docker image from docker file ?
+	 Docker build -t nameoftheimage .(path of the docker file) 
+	2) How do you deploy the docker image generally in testing env to production environment in Jenkins ?
+	
+	3) What is docker data Centre?
+	Docker Datacenter (DDC) is the Containers as a Service (CaaS) platform for enterprise IT and application teams. to build, ship and run, any application anywhere.
+	
+	4) What is docker hub uses ?
+	A) Repository for container images.
+	
+	1) What are they types of docker networks ?
+     network type used in docker are  bridge and overlay and macvlan network
+
+Bridge:It is limited to containers within a single host running the Docker engine.
+
+docker network create -d bridge my-bridge-net
+
+Overlay:n Docker, an overlay network driver is used for multi-host network communication
+docker network create -d overlay --subnet=192.168.10.0/24 my-overlay-net
+
+Macvlan Networks:The macvlan driver is used to connect Docker containers directly to the host network interfaces through layer 2 segmentation.
+
+docker network create -d macvlan --subnet=192.168.40.0/24 --gateway=192.168.40.1  -o parent=eth0 my-macvlan-net
+
+
+	1) How do you define network in docker-compose file ?
+networks:
+  frontend:
+    name: custom_frontend
+    driver: custom-driver-1
+
+
+	1) What are the basic parameters required in docker compose file ?
+	A) Version "3.9",all required services details, volume details and env variable details .
+	
+	1) What is docker interlock ?
+docker interlock is an application routing proxy service for Docker.
+Interlock uses the Docker API for configuration. The user does not have to manually update or restart anything to make services available.
+	1) What is overlay network ?
+	Overlay:n Docker, an overlay network driver is used for multi-host network communication
+	docker network create -d overlay --subnet=192.168.10.0/24 my-overlay-net
+	
+	2) How do you communicate between 2 containers present in separate network ?
+	 overlay network driver creates a distributed network among multiple Docker daemon hosts.
+	
+	3) How to store the data present in the docker container in the aws ?
+Using rexray plug in .
+	
+	1) If we define the docker volume in the docker compose file ,is it possible to share the data with EFS and NFS ? 
+	Using rex ray plug in we can store data related to container in EBS and EFS ….most of the cloud related storages.
+	 
+	
+	2) Jenkins hudson plugin ?
+	
+	3) What is kibana?
+	Kibana is a data visualization and exploration tool used for log and time-series analytics, application monitoring,
+	
+	4) How to pull the logs form docker container to ELK and describe the process ?
+	
+	Logs are pulled from the various Docker containers and hosts by Logstash, the stack’s workhorse that applies filters to parse the logs better. Logstash forwards the logs to Elasticsearch for indexing, and Kibana analyzes and visualizes the data.
+
+
+

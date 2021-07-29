@@ -549,6 +549,6 @@ kubectl rollout history deploy nginx-deployment
 
 Installation of Ansible:
 -------------------------
-
+sudo dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
   839  yum install epel-release
   840  yum install ansible
